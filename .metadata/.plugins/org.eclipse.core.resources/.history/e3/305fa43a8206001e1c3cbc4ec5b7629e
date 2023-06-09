@@ -1,0 +1,42 @@
+package com.microservices.userdetails.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.microservices.userdetails.model.UserDetails;
+import com.microservices.userdetails.repository.UserDetailsRepository;
+
+@Service
+public class UserDetailsService {
+	
+	@Autowired
+	private UserDetailsRepository userDetailsRepository;
+
+	@Autowired
+	public void UserDetailService(UserDetailsRepository userDetailsRepository) {
+		this.userDetailsRepository = userDetailsRepository;
+	}
+
+	public UserDetails createUser(UserDetails userDetails) {
+		return userDetailsRepository.save(userDetails);
+	}
+
+	public List<UserDetails> getAllUsers() {
+		return userDetailsRepository.findAll();
+	}
+
+	public UserDetails getUserById(String userId) {
+		return userDetailsRepository.findById(userId).orElse(null);
+	}
+
+	public UserDetails updateUser(UserDetails user) {
+		return userDetailsRepository.save(user);
+	}
+
+	public void deleteUser(String id) {
+		userDetailsRepository.deleteById(id);
+	}
+
+}

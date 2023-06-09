@@ -1,0 +1,9 @@
+package com.microservices.userdetails.exception;
+
+public class NoUserFoundException extends RuntimeException{
+	
+	public public NoUserFoundException(String msg) {
+		// TODO Auto-generated constructor stub
+		super(msg);
+	}
+}
